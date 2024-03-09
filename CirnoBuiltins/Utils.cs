@@ -23,6 +23,15 @@ namespace CirnoBuiltins
 
         public static ShadowLanternControl SLControl;
 
+        /// <summary>
+        /// 播放跑马灯
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="msg"></param>
+        /// <param name="start"></param>
+        /// <param name="end"></param>
+        /// <param name="error"></param>
+        /// <returns></returns>
         public static string ShadowLantern(IAddonContext context, string msg, DateTime start, DateTime end, out bool error)
         {
             string ret = string.Empty;
@@ -38,6 +47,11 @@ namespace CirnoBuiltins
             return ret;
         }
 
+        /// <summary>
+        /// 设置底部栏文本
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="msg"></param>
         public static void SetFootText(IAddonContext context, string msg)
         {
             FootViewModel vm = SimpleIoc.Default.GetInstance<FootViewModel>() ?? (FootViewModel)GetViewModel(context, VM_ID_FOOT);
@@ -46,6 +60,11 @@ namespace CirnoBuiltins
             DispatcherHelper.RunAsync(() => vm.CenterText = msg);
         }
 
+        /// <summary>
+        /// 设置底部栏版本信息
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="msg"></param>
         public static void SetFootVersion(IAddonContext context, string msg)
         {
             FootViewModel vm = SimpleIoc.Default.GetInstance<FootViewModel>() ?? (FootViewModel)GetViewModel(context, VM_ID_FOOT);
@@ -54,6 +73,11 @@ namespace CirnoBuiltins
             DispatcherHelper.RunAsync(() => vm.Version = msg);
         }
 
+        /// <summary>
+        /// 设置底部栏 TerminalCode
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="msg"></param>
         public static void SetTerminalCode(IAddonContext context, string msg)
         {
             FootViewModel vm = SimpleIoc.Default.GetInstance<FootViewModel>() ?? (FootViewModel)GetViewModel(context, VM_ID_FOOT);
@@ -62,10 +86,15 @@ namespace CirnoBuiltins
             DispatcherHelper.RunAsync(() =>
             {
                 vm.tCode = msg;
-                vm.tCodeColor = new SolidColorBrush(Colors.Blue);
+                vm.tCodeColor = new SolidColorBrush(Colors.LightBlue);
             });
         }
 
+        /// <summary>
+        /// 设置远程 http 服务器地址
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="addr"></param>
         public static void SetRemoteServerAddr(IAddonContext context, string addr)
         {
             dynamic service = context.GetFirstOrDefaultService("Cirno.ChinaGS.Injection.Permanent", "Cirno.ChinaGS.Injection.Permanent.Service");
@@ -75,6 +104,21 @@ namespace CirnoBuiltins
             }
         }
 
+        /// <summary>
+        /// 创建时间线任务
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="StartTime"></param>
+        /// <param name="EndTime"></param>
+        /// <param name="Lvl"></param>
+        /// <param name="AllowParallel"></param>
+        /// <param name="OnStart"></param>
+        /// <param name="OnPause"></param>
+        /// <param name="OnRestart"></param>
+        /// <param name="OnStop"></param>
+        /// <param name="OnTaskStateChanged"></param>
+        /// <param name="OnTaskCreated"></param>
+        /// <param name="taskname"></param>
         public static void CreateTimelineTask(IAddonContext context, DateTime StartTime, DateTime EndTime,
             int Lvl, bool AllowParallel,
             Action<string, string> OnStart, Action<string, string> OnPause,
@@ -92,6 +136,12 @@ namespace CirnoBuiltins
             CreateTimelineTask(context, StartTime, EndTime, Lvl, true, OnStart, null, null, OnStop, null, null, taskname);
         }
 
+        /// <summary>
+        /// 获取 ViewModel
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="id"></param>
+        /// <returns></returns>
         private static IViewModel GetViewModel(IAddonContext context, string id)
         {
             IViewHelperService service = context.GetFirstOrDefaultService<IViewHelperService>("GS.Terminal.LogicShell");
@@ -100,6 +150,12 @@ namespace CirnoBuiltins
             return vm;
         }
 
+        /// <summary>
+        /// 添加大图滑动页面
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="imageUri"></param>
+        /// <returns></returns>
         public static Guid AddPosterTemplate(IAddonContext context, string imageUri)
         {
             MainWindowViewModel vm = SimpleIoc.Default.GetInstance<MainWindowViewModel>() ?? (MainWindowViewModel)GetViewModel(context, VM_ID_MAIN);
@@ -129,6 +185,11 @@ namespace CirnoBuiltins
             }
         }
 
+        /// <summary>
+        /// 移除大图滑动页面
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="guid"></param>
         public static void RemovePosterTemplate(IAddonContext context, Guid guid)
         {
             MainWindowViewModel vm = SimpleIoc.Default.GetInstance<MainWindowViewModel>() ?? (MainWindowViewModel)GetViewModel(context, VM_ID_MAIN);
@@ -145,6 +206,11 @@ namespace CirnoBuiltins
             }
         }
 
+        /// <summary>
+        /// 添加多媒体滑动页面
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="media_json_filename"></param>
         public static void AddMultiMediaVisualTemplate(IAddonContext context, string media_json_filename)
         {
             MainWindowViewModel vm = SimpleIoc.Default.GetInstance<MainWindowViewModel>() ?? (MainWindowViewModel)GetViewModel(context, VM_ID_MAIN);
@@ -197,6 +263,12 @@ namespace CirnoBuiltins
             }
         }
 
+        /// <summary>
+        /// 移除滑动页面
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="template_name"></param>
+        /// <param name="ignore_first"></param>
         public static void RemoveVisualTemplate(IAddonContext context, string template_name, bool ignore_first = true)
         {
             MainWindowViewModel vm = SimpleIoc.Default.GetInstance<MainWindowViewModel>() ?? (MainWindowViewModel)GetViewModel(context, VM_ID_MAIN);
@@ -209,11 +281,19 @@ namespace CirnoBuiltins
             }
         }
 
+        /// <summary>
+        /// 获取缓存路径
+        /// </summary>
+        /// <returns></returns>
         public static string GetCachePath()
         {
             return Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "cache");
         }
 
+        /// <summary>
+        /// 清除所有大图滑动页面
+        /// </summary>
+        /// <param name="context"></param>
         public static void ClearAllPosterTemplate(IAddonContext context)
         {
             MainWindowViewModel vm = SimpleIoc.Default.GetInstance<MainWindowViewModel>() ?? (MainWindowViewModel)GetViewModel(context, VM_ID_MAIN);
@@ -227,6 +307,12 @@ namespace CirnoBuiltins
             }
         }
 
+        /// <summary>
+        /// 写 Json 文件
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="filename"></param>
+        /// <param name="json_b64"></param>
         public static void WriteJson(IAddonContext context, string filename, string json_b64)
         {
             string cache = GetCachePath();
@@ -244,6 +330,12 @@ namespace CirnoBuiltins
             File.WriteAllText(Path.Combine(cache, "BlockCache", filename), content, Encoding.UTF8);
         }
 
+        /// <summary>
+        /// 下载文件
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="url"></param>
+        /// <param name="savename"></param>
         public static void DownloadFile(IAddonContext context, string url, string savename)
         {
             string cache = GetCachePath();
@@ -279,11 +371,21 @@ namespace CirnoBuiltins
             }
         }
 
+        /// <summary>
+        /// 设置主题
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="name"></param>
         public static void SetTheme(IAddonContext context, string name)
         {
             context.GetFirstOrDefaultService("GS.Terminal.Theme", "GS.Terminal.Theme.Service").SetTheme(name);
         }
 
+        /// <summary>
+        /// 启动进程
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="process"></param>
         public static void StartProcess(IAddonContext context, string process)
         {
             string cache = GetCachePath();
@@ -316,6 +418,12 @@ namespace CirnoBuiltins
             }
         }
 
+        /// <summary>
+        /// 获取指定插件上下文
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="name"></param>
+        /// <returns></returns>
         private static IAddonContext GetDesignatedAddonContext(IAddonContext context, string name)
         {
             IAddon addon = AddonRuntime.Instance.GetInstalledAddons().FirstOrDefault(x => x.SymbolicName == name);

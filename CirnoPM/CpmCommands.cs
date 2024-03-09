@@ -258,7 +258,8 @@ namespace CirnoPM
         public string Execute(IAddonContext context, DateTime start, DateTime end, string[] args)
         {
             string result = string.Empty;
-            result = "Not implemented";
+            var fs = File.Create(Path.Combine(context.Addon.Location, "CommandLib", args[0] + ".uninstall"));
+            fs.Close();
             return result;
         }
     }

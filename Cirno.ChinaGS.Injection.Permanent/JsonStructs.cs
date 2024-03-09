@@ -2,6 +2,9 @@
 
 namespace Cirno.ChinaGS.Injection.Permanent
 {
+    /// <summary>
+    /// 标准远程指令接口
+    /// </summary>
     public interface IRemoteCommandGeneric
     {
         string command_protocol_version { get; set; }
@@ -11,6 +14,9 @@ namespace Cirno.ChinaGS.Injection.Permanent
         List<string> args { get; set; }
     }
 
+    /// <summary>
+    /// 标准远程指令
+    /// </summary>
     public class RemoteCommandGeneric : IRemoteCommandGeneric
     {
         public string command_protocol_version { get; set; }
@@ -20,6 +26,9 @@ namespace Cirno.ChinaGS.Injection.Permanent
         public List<string> args { get; set; }
     }
 
+    /// <summary>
+    /// 向下兼容的远程指令
+    /// </summary>
     public class RemoteCommandv1
     {
         public string command_name { get; set; }
@@ -28,6 +37,9 @@ namespace Cirno.ChinaGS.Injection.Permanent
         public string args { get; set; }
     }
 
+    /// <summary>
+    /// 新版远程指令
+    /// </summary>
     public class RemoteCommandv2 : IRemoteCommandGeneric
     {
         public string command_protocol_version { get; set; }
@@ -37,6 +49,9 @@ namespace Cirno.ChinaGS.Injection.Permanent
         public List<string> args { get; set; }
     }
 
+    /// <summary>
+    /// 返回数据格式接口
+    /// </summary>
     public interface IResult
     {
         string machine_id { get; set; }
@@ -46,6 +61,9 @@ namespace Cirno.ChinaGS.Injection.Permanent
         string time { get; set; }
     }
 
+    /// <summary>
+    /// 返回数据格式
+    /// </summary>
     public class Result : IResult
     {
         public string machine_id { get; set; }
@@ -55,6 +73,9 @@ namespace Cirno.ChinaGS.Injection.Permanent
         public string time { get; set; }
     }
 
+    /// <summary>
+    /// 远程指令数据协议版本
+    /// </summary>
     public enum CommandProtocolVersion
     {
         Unknown,

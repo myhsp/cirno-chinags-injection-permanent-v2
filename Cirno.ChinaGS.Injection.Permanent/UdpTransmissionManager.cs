@@ -6,6 +6,9 @@ using System.Threading;
 
 namespace Cirno.ChinaGS.Injection.Permanent
 {
+    /// <summary>
+    /// UDP 监听管理器
+    /// </summary>
     public class UdpTransmissionManager : IDisposable
     {
         private UdpClient client;
@@ -32,6 +35,9 @@ namespace Cirno.ChinaGS.Injection.Permanent
             }
         }
 
+        /// <summary>
+        /// 启动侦听
+        /// </summary>
         private void Listen()
         {
             IPEndPoint remoteEP = new IPEndPoint(IPAddress.Any, 0);
@@ -54,13 +60,16 @@ namespace Cirno.ChinaGS.Injection.Permanent
                         });
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
 
                 }
             }
         }
 
+        /// <summary>
+        /// 启动侦听线程
+        /// </summary>
         public void StartListenAsync()
         {
             new Thread(Listen)
@@ -70,6 +79,12 @@ namespace Cirno.ChinaGS.Injection.Permanent
             this.listening = true;
         }
 
+        /// <summary>
+        /// 发送 UDP 数据报
+        /// </summary>
+        /// <param name="msg">消息</param>
+        /// <param name="remoteEP">远程终结点</param>
+        /// <param name="remotePort">远程端口</param>
         public void Send(string msg, IPEndPoint remoteEP, int remotePort)
         {
             byte[] buffer = Encoding.UTF8.GetBytes(msg);
@@ -77,6 +92,10 @@ namespace Cirno.ChinaGS.Injection.Permanent
             this.client.Send(buffer, buffer.Length, remoteEP);
         }
 
+        /// <summary>
+        /// 接收到 UDP 消息
+        /// </summary>
+        /// <param name="e"></param>
         protected virtual void UdpTransmissionReceived(UdpTransmissionEventArgs e)
         {
             UdpTransmissionReceivedEventHandler handler = this.OnUdpTransmissionReceived;

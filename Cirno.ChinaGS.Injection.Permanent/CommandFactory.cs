@@ -23,6 +23,40 @@ namespace Cirno.ChinaGS.Injection.Permanent
         {
         }
 
+        /// <summary>
+        /// 卸载指定指令扩展包
+        /// </summary>
+        public void ExecuteUninstall()
+        {
+            try
+            {
+                string path = Path.Combine(Program.AddonContext.Addon.Location, "CommandLib");
+                foreach (string file in Directory.GetFiles(path, "*.uninstall"))
+                {
+                    string target = file.Replace(".uninstall", ".dll");
+                    try
+                    {
+                        if (File.Exists(target))
+                        {
+                            File.Delete(target);
+                        }
+                        File.Delete(file);
+                    }
+                    catch (Exception ex)
+                    {
+                        Program.WriteLog("Fail to remove file!" + file + ";" + target, ex);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Program.WriteLog("Fail to uninstall designated assembly files!", ex);
+            }
+        }
+
+        /// <summary>
+        /// 执行指定扩展包的安装或更新
+        /// </summary>
         public void ExecuteUpdate()
         {
             try
@@ -53,6 +87,9 @@ namespace Cirno.ChinaGS.Injection.Permanent
             }
         }
 
+        /// <summary>
+        /// 组装
+        /// </summary>
         public void ComposeCommandAssembly()
         {
             string path = Path.Combine(Program.AddonContext.Addon.Location, "CommandLib");
@@ -113,7 +150,7 @@ namespace Cirno.ChinaGS.Injection.Permanent
         public string ExecuteStartupCommand(ref int errorCode)
         {
             string res = "";
-            if (!(startups == null || startups.Count<IStartupCommand>() < 1))
+            if (!(startups == null || startups.Count() < 1))
             {
                 foreach (IStartupCommand startup in startups)
                 {

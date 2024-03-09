@@ -8,6 +8,8 @@ namespace Cirno.ChinaGS.Injection.Permanent
 {
     public class Program : IAddonActivator
     {
+        public const string LOG_PREFIX = "[CGSI v3.2] ";
+
         public static IAddonContext AddonContext;
         public static CommandFactory Factory;
         public static UdpTransmissionManager UdpManager;
@@ -24,6 +26,7 @@ namespace Cirno.ChinaGS.Injection.Permanent
                 Factory = new CommandFactory();
 
                 int errorCode = 0;
+                Factory.ExecuteUninstall();
                 Factory.ExecuteUpdate();
                 Factory.ComposeCommandAssembly();
                 Factory.ExecuteStartupCommand(ref errorCode);
@@ -106,13 +109,18 @@ namespace Cirno.ChinaGS.Injection.Permanent
             }
         }
 
+        /// <summary>
+        /// 写日志
+        /// </summary>
+        /// <param name="msg">消息</param>
+        /// <param name="exception">异常</param>
         public static void WriteLog(string msg, Exception exception = null)
         {
             try
             {
                 if (Config.Debugging)
                 {
-                    AddonContext.Logger.Info(msg, exception);
+                    AddonContext.Logger.Info(LOG_PREFIX + msg, exception);
                 }
             }
             catch
