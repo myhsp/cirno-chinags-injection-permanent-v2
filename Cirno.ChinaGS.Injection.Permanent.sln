@@ -27,6 +27,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CirnoTesting", "CirnoTestin
 		{19D27DDD-2F76-440B-B4B0-A9A032870D7F} = {19D27DDD-2F76-440B-B4B0-A9A032870D7F}
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CirnoModifier", "CirnoModifier\CirnoModifier.csproj", "{A40B1744-5A8D-4ED5-8B5A-875B79A87DC2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +59,10 @@ Global
 		{7C1C81ED-C759-4FEB-AEB9-E3BA1F7CE29A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7C1C81ED-C759-4FEB-AEB9-E3BA1F7CE29A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7C1C81ED-C759-4FEB-AEB9-E3BA1F7CE29A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A40B1744-5A8D-4ED5-8B5A-875B79A87DC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A40B1744-5A8D-4ED5-8B5A-875B79A87DC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A40B1744-5A8D-4ED5-8B5A-875B79A87DC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A40B1744-5A8D-4ED5-8B5A-875B79A87DC2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
