@@ -31,7 +31,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CirnoFramework.Interface.Commands">
+    <Reference Include="CirnoFramework.Interface.Commands, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\CirnoFramework.Interface.Commands\bin\Release\CirnoFramework.Interface.Commands.dll</HintPath>
     </Reference>
     <Reference Include="GalaSoft.MvvmLight">

@@ -31,8 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CirnoFramework.Interface.Commands">
-      <HintPath>..\CirnoFramework.Interface.Commands\bin\Debug\CirnoFramework.Interface.Commands.dll</HintPath>
+    <Reference Include="CirnoFramework.Interface.Commands, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\CirnoFramework.Interface.Commands\bin\Release\CirnoFramework.Interface.Commands.dll</HintPath>
     </Reference>
     <Reference Include="GalaSoft.MvvmLight">
       <HintPath>D:\SmartBoard_2.1.6.618[618beta5]\GalaSoft.MvvmLight.dll</HintPath>
