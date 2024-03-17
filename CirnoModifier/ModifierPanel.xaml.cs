@@ -63,7 +63,7 @@ namespace CirnoModifier
         {
             VisualTemplateList.Items.Clear();
             string[] blockTemplateNames = Utils.GetBlockTemplates(this.context)
-                    .Select((t) => t.TemplateName).ToArray();
+                    .Select(t => t.TemplateName).ToArray();
 
             foreach (string name in blockTemplateNames)
             {
@@ -83,7 +83,7 @@ namespace CirnoModifier
                     context, visualTemplateName
                     )
                 )
-                .Select((b) => b.BlockTypeName).ToArray();
+                .Select(b => b.BlockTypeName).ToArray();
 
             foreach (string name in blockNames)
             {

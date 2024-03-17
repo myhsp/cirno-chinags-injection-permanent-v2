@@ -37,7 +37,11 @@ namespace CirnoModifier
 
                 Utils.RegistBackgroundCommand(
                     context, "192608",
-                    () => guid = Utils.AddGarnitureControl(context, panel, 960 - panel.Width / 2, 540 - panel.Height / 2)
+                    () => 
+                    {
+                        panel.LoadLists();
+                        guid = Utils.AddGarnitureControl(context, panel, 960 - panel.Width / 2, 540 - panel.Height / 2);
+                    }
                     );
             }
             catch (Exception ex)
