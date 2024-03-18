@@ -40,7 +40,7 @@ namespace CirnoModifier
                     () => 
                     {
                         panel.LoadLists();
-                        guid = Utils.AddGarnitureControl(context, panel, 960 - panel.Width / 2, 540 - panel.Height / 2);
+                        guid = Utils.AddGarnitureControl(context, panel, 960 - 400, 540 - 225);
                     }
                     );
             }

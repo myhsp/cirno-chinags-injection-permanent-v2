@@ -10,17 +10,17 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Frame Background="White" BorderBrush="#FF000000" BorderThickness="2,2,2,0" HorizontalAlignment="Center" Height="450" VerticalAlignment="Center" Width="800"/>
+        <Frame Background="White" BorderBrush="#FF000000" BorderThickness="2,2,2,2" HorizontalAlignment="Center" Height="450" VerticalAlignment="Center" Width="800"/>
         <GroupBox HorizontalAlignment="Left" Height="350" Header="列表" Margin="10,0,0,0" VerticalAlignment="Center" Width="500">
             <StackPanel Orientation="Horizontal">
                 <StackPanel Orientation="Vertical">
                     <Label Content="VisualTemplate 列表" Margin="40, 0, 0, 0"></Label>
-                    <ListBox x:Name="VisualTemplateList" HorizontalAlignment="Left" Height="240" Margin="40,0,0,10" Width="160" SelectionChanged="VisualTemplateList_SelectionChanged"/>
+                    <ListBox x:Name="VisualTemplateList" HorizontalAlignment="Left" Height="240" Margin="40,0,0,10" Width="160"/>
                     <Button x:Name="Btn_RefreshVTL" Content="刷新 VisualTemplate" Margin="40, 0, 0, 0" Click="Btn_RefreshVTL_Click"></Button>
                 </StackPanel>
                 <StackPanel Orientation="Vertical">
                     <Label Content="VisualBlock 列表" Margin="40, 0, 0, 0"></Label>
-                    <ListBox x:Name="VisualBlockList" Margin="40, 0, 0, 10" Height="240" Width="160" SelectionChanged="VisualBlockList_SelectionChanged"/>
+                    <ListBox x:Name="VisualBlockList" Margin="40, 0, 0, 10" Height="240" Width="160"/>
                     <Button x:Name="Btn_RefreshVBL" Content="刷新 VisualBlock" Margin="40, 0, 0, 0" Click="Btn_RefreshVBL_Click"></Button>
                 </StackPanel>
             </StackPanel>

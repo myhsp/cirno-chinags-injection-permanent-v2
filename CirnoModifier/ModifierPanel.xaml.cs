@@ -123,7 +123,7 @@ namespace CirnoModifier
         {
             var dialog = new Microsoft.Win32.OpenFileDialog() 
             {
-                Filter = "Json files (.json)|*.txt|All files (*.*)|*.*"
+                Filter = "Json files (.json)|*.json|All files (*.*)|*.*"
             };
 
             bool result = dialog.ShowDialog() == true;
@@ -139,16 +139,6 @@ namespace CirnoModifier
             {
                 Utils.SetVisualBlockItemJsonData(selectedBlock, JsonSource.Text);
             }
-        }
-
-        private void VisualTemplateList_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            LoadVisualTemplateList();
-        }
-
-        private void VisualBlockList_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            LoadVisualBlockList();
         }
     }
 }
