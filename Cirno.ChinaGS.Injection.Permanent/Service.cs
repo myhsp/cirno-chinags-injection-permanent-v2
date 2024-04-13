@@ -45,5 +45,16 @@ namespace Cirno.ChinaGS.Injection.Permanent
         {
             return Program.Factory.ExecuteCommand(command, start, end, args, ref errorCode);
         }
+
+        /// <summary>
+        /// 添加 udp 侦听事件
+        /// </summary>
+        /// <param name="callback"></param>
+        /// <returns></returns>
+        public string AddUdpListenerCallback(Action<object, UdpTransmissionEventArgs> callback)
+        {
+            Program.UdpManager.OnUdpTransmissionReceived += callback.Invoke;
+            return string.Empty;
+        }
     }
 }
